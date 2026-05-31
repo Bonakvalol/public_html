@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/128/2560/2560789.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Цветочный шарм - Роскошные букеты и подарки</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
+    
+    <script src="./js/script.js"></script>
+    
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                </svg>
+                <span>Цветочный шарм</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#footer" onclick="showContact()">Контакты</a></li>
+                    <li><a href="wheel/wheel.html" class="luck-link">Удача</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+
+                <a href="/user_profile/user_profile.php" id="headerProfileBtn" class="profile-btn" style="display: flex;">
+                    <svg class="profile-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span id="headerProfileName">Профиль</span>
+                </a>
+                
+                <div id="adminPanelBtn" class="admin-panel-btn" style="display: none;">
+                    <a href="/admin/index.php" style="display: flex; align-items: center; padding: 8px 15px; background: #6c63ff; color: white; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: 500; margin-left: 10px;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 5px;">
+                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Админ
+                    </a>
+                </div>
+                
+                <div class="account-icon" onclick="toggleAccount()">
+                    <img src="https://cdn-icons-png.flaticon.com/128/17487/17487636.png" alt="Вход в аккаунт">
+                </div>
+                
+                <div class="cart-icon" onclick="window.toggleCart()">
+                    <span id="cart-count">0</span>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#footer" onclick="showContact()">Контакты</a></li>
+                    <li><a href="wheel/wheel.html" class="luck-link">Удача</a></li>
+                    <li class="divider"></li>
+                    <li><a href="tel:+79267582239">+7 (926) 758-22-39</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Роскошные букеты для особых моментов</h1>
+                    <p>Доставляем свежие цветы и создаем незабываемые впечатления. Более 250 видов букетов в каталоге</p>
+                    <a href="#catalog" class="cta-button">Выбрать букет</a>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                    <div class="floating-shape shape-4"></div>
+                    <div class="floating-shape shape-5"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="occasions-section">
+            <div class="container">
+                <h2>Выберите повод для подарка</h2>
+                <div class="occasions-grid">
+                    <div class="occasion-card" data-occasion="valentine" onclick="filterByOccasion('valentine')">
+                        <div class="occasion-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4549/4549815.png" alt="Для любимых" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Для любимых</h3>
+                        <p>Романтические букеты</p>
+                    </div>
+                    <div class="occasion-card" data-occasion="birthday" onclick="filterByOccasion('birthday')">
+                        <div class="occasion-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4549/4549944.png" alt="День рождения" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>День рождения</h3>
+                        <p>Праздничные композиции</p>
+                    </div>
+                    <div class="occasion-card" data-occasion="mothers-day" onclick="filterByOccasion('mothers-day')">
+                        <div class="occasion-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4550/4550041.png" alt="Для мамы" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Для мамы</h3>
+                        <p>Нежные цветы</p>
+                    </div>
+                    <div class="occasion-card" data-occasion="congratulations" onclick="filterByOccasion('congratulations')">
+                        <div class="occasion-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/4550/4550025.png" alt="Поздравления" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Поздравления</h3>
+                        <p>Торжественные букеты</p>
+                    </div>
+                    <div class="occasion-card all-categories" onclick="showAllCategories()">
+                        <div class="occasion-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/15207/15207424.png" alt="Все категории" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Все категории</h3>
+                        <p>Весь каталог</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters">
+                    <div class="filter-item">
+                        <label>Сортировка</label>
+                        <div class="custom-select">
+                            <select id="sort-select">
+                                <option value="default">По умолчанию</option>
+                                <option value="price-asc">По возрастанию цены</option>
+                                <option value="price-desc">По убыванию цены</option>
+                                <option value="popular">Популярные</option>
+                                <option value="new">Новинки</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <label>Категория</label>
+                        <div class="custom-select">
+                            <select id="category-select">
+                                <option value="all">Все категории</option>
+                                <option value="roses">Розы</option>
+                                <option value="tulips">Тюльпаны</option>
+                                <option value="lilies">Лилии</option>
+                                <option value="daisies">Ромашки</option>
+                                <option value="daffodils">Нарциссы</option>
+                                <option value="chrysanthemum">Хризантемы</option>
+                                <option value="hyacinths">Гиацинты</option>
+                                <option value="gypsophila">Гипсофилы</option>
+                                <option value="orchid">Орхидеи</option>
+                                <option value="protea">Протеи</option>
+                                <option value="premium">Премиум</option>
+                                <option value="gifts">Подарки</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-item price-filter">
+    <label>Цена: <span id="price-display">500 - 25000 ₽</span></label>
+    <div class="price-slider-container">
+        <div class="price-slider-track"></div>
+        <div class="price-slider-fill"></div>
+        <div class="price-slider-handle min-handle"></div>
+        <div class="price-slider-handle max-handle"></div>
+        <input type="range" id="price-min" min="500" max="25000" value="500" step="100">
+        <input type="range" id="price-max" min="500" max="25000" value="25000" step="100">
+    </div>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="catalog" id="catalog">
+            <div class="container">
+                <h2>Наш каталог</h2>
+                
+                <div class="catalog-categories" id="catalog-categories">
+                </div>
+                
+                <div class="products-grid" id="products-grid">
+                </div>
+                
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Загружаем товары...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="custom-order-section">
+            <div class="container">
+                <div class="custom-order-card">
+                    <div class="custom-order-content">
+                        <div class="custom-order-header">
+                            <div class="custom-order-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Индивидуальный букет от флориста</h3>
+                                <p class="custom-order-subtitle">Создадим уникальную композицию специально для вас! Наши флористы воплотят любые ваши пожелания.</p>
+                            </div>
+                        </div>
+                        
+                        <form id="custom-order-form" class="custom-order-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="custom-name">
+                                        <span class="label-text">Ваше имя *</span>
+                                        <input type="text" id="custom-name" name="name" placeholder="Иван Иванов" required>
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="custom-phone">
+                                        <span class="label-text">Ваш телефон *</span>
+                                        <input type="tel" id="custom-phone" name="phone" placeholder="+7 (999) 123-45-67" required inputmode="numeric">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="custom-email">
+                                    <span class="label-text">Ваш email</span>
+                                    <input type="email" id="custom-email" name="email" placeholder="example@mail.ru (необязательно)">
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="custom-description">
+                                    <span class="label-text">Опишите желаемый букет *</span>
+                                    <textarea id="custom-description" name="description" 
+                                              placeholder="Опишите, какой букет вы хотели бы получить:
+• Какие цветы предпочитаете (розы, тюльпаны, лилии и т.д.)
+• Цветовую гамму (пастельные, яркие, классические)
+• Размер букета (небольшой, средний, большой)
+• Повод для букета (день рождения, свадьба, юбилей)
+• Любые особые пожелания" 
+                                              rows="4" required></textarea>
+                                    <div class="char-counter">
+                                        <span id="desc-char-count">0</span>/1000 символов
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="budget-label">
+                                    <div class="budget-header">
+                                        <span class="label-text">Ваш бюджет</span>
+                                        <span class="budget-value" id="budget-value">5 000 ₽</span>
+                                    </div>
+                                    <div class="budget-slider-container">
+                                        <div class="budget-slider-track"></div>
+                                        <div class="budget-slider-fill" id="budget-fill"></div>
+                                        <div class="budget-slider-handle" id="budget-handle"></div>
+                                        <input type="range" id="budget-slider" name="budget" min="1000" max="50000" step="500" value="5000" 
+                                               class="budget-slider" aria-label="Выбор бюджета">
+                                    </div>
+                                    <div class="budget-scale">
+                                        <span>1 000 ₽</span>
+                                        <span>25 000 ₽</span>
+                                        <span>50 000 ₽</span>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-custom-order">
+                                <span>Отправить заявку флористу</span>
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            
+                            <p class="form-note">Наш флорист свяжется с вами в течение 2 часов в рабочее время (10:00-21:00) для обсуждения деталей</p>
+                        </form>
+                    </div>
+                    
+                    <div class="custom-order-image">
+                        <div class="floating-shape shape-1"></div>
+                        <div class="floating-shape shape-2"></div>
+                        <div class="floating-shape shape-3"></div>
+                        <img src="./img/lilies/lilies-in-a-bouquet1.jpg" 
+                             alt="Индивидуальный букет от флориста">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h4>Эксклюзивный дизайн</h4>
+                                <p>Каждый букет создаётся индивидуально под ваш запрос</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Цветочный шарм — роскошные букеты с доставкой по Москве</h2>
+                        
+                        <p>В современном мире, где скорость и удобство становятся решающими факторами, мы создали сервис, который сочетает в себе безупречное качество, внимательное отношение к клиенту и современный подход к обслуживанию.</p>
+                        
+                        <p>Цветочный шарм — это не просто цветочный магазин, а полноценный сервис по доставке роскошных букетов, который включает как удобный онлайн-заказ с курьерской доставкой, так и возможность самовывоза из наших уютных салонов в Москве.</p>
+
+                        <h3>Наше качество — ваша уверенность</h3>
+                        
+                        <p>Мы получаем цветы ежедневно напрямую с лучших мировых плантаций и российских теплиц, что гарантирует неизменно свежую продукцию. Каждый букет будет радовать своей красотой и свежестью долгое время после вручения.</p>
+                        
+                        <p>В нашем ассортименте вы найдете:</p>
+                        
+                        <ul class="about-features">
+                            <li>Роскошные эквадорские и российские розы премиум-класса</li>
+                            <li>Утонченные орхидеи и изящные лилии</li>
+                            <li>Нежные весенние тюльпаны и альстромерии</li>
+                            <li>Яркие герберы и милые хризантемы</li>
+                            <li>Уникальные композиции из сезонных цветов</li>
+                        </ul>
+
+                        <h3>Преимущества Цветочный шарм</h3>
+                        
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <div class="advantage-icon"></div>
+                                <h4>Широкий выбор и доступность</h4>
+                                <p>Более 250 готовых букетов в каталоге и возможность создания индивидуальных композиций под любой повод и бюджет.</p>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon"></div>
+                                <h4>Быстрая и надежная доставка</h4>
+                                <p>Оперативная доставка курьером по Москве в удобное для вас время. Мы понимаем, как важна пунктуальность, когда дело касается особенных моментов.</p>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon"></div>
+                                <h4>Гарантия свежести</h4>
+                                <p>Мы тщательно отбираем каждый цветок и гарантируем его качество. Если что-то пойдет не так — мы обязательно решим этот вопрос.</p>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon"></div>
+                                <h4>Удобные точки самовывоза</h4>
+                                <p>Заберите ваш заказ в том салоне, который удобнее всего расположен территориально.</p>
+                            </div>
+                            
+                            <div class="advantage-item">
+                                <div class="advantage-icon"></div>
+                                <h4>Гибкая система лояльности</h4>
+                                <p>Специальные условия и приятные бонусы для наших постоянных клиентов.</p>
+                            </div>
+                        </div>
+
+                        <h3>Как заказать букет с доставкой</h3>
+                        
+                        <p>Оформить заказ в нашем интернет-магазине можно круглосуточно. Просто выберите понравившуюся композицию, добавьте ее в корзину, укажите дату и время доставки, а также адрес получателя.</p>
+                        
+                        <p>К каждому букету вы можете добавить поздравительную открытку с вашим текстом — мы доставим ее совершенно бесплатно.</p>
+                        
+                        <p>Для создания особенных, крупных букетов или индивидуальных композиций мы рекомендуем заранее связаться с нашими флористами. Это позволит нам подготовить именно тот вариант, который идеально подойдет для вашего события.</p>
+
+                        <h3>Почему выбирают Цветочный шарм</h3>
+                        
+                        <div class="reasons-list">
+                            <div class="reason-item">
+                                <strong>Качественные цветы</strong> от проверенных поставщиков
+                            </div>
+                            <div class="reason-item">
+                                <strong>Доступные цены</strong> без компромиссов в качестве
+                            </div>
+                            <div class="reason-item">
+                                <strong>Профессиональные флористы</strong> с художественным вкусом
+                            </div>
+                            <div class="reason-item">
+                                <strong>Удобный сервис</strong> для современных покупателей
+                            </div>
+                            <div class="reason-item">
+                                <strong>Внимание к деталям</strong> в каждой композиции
+                            </div>
+                        </div>
+
+                        <div class="about-cta">
+                            <p><strong>Дарите близким не просто цветы, а незабываемые эмоции вместе с Цветочный шарм! Удивляйте, радуйте и создавайте прекрасные моменты с нашими роскошными букетами.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+<section class="map-section">
+    <div class="container">
+        <h2>Как нас найти</h2>
+        <div class="map-container">
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4a0dc44896e0611cf04a2c7a5e63b6a920268b9b99f9d483d74115d2d4b9ff56&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+        </div>
+    </div>
+</section>
+
+        <section class="reviews-section" id="reviews-section">
+            <div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="reviews-slider">
+                    <div class="reviews-track" id="reviews-track">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <span>AH</span>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Анна Новикова</h4>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Заказывала букет для мамы на день рождения. Очень довольна качеством цветов и оперативной доставкой. Букет простоял более недели! Обязательно буду заказывать еще.</p>
+                            </div>
+                            <div class="review-date">
+                                <small>10 мая 2025</small>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <span>MK</span>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Михаил Красин</h4>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Отличный сервис! Заказал индивидуальный букет для жены на годовщину. Флористы отлично воплотили мои пожелания, жена была в восторге. Спасибо за помощь в создании праздничного настроения!</p>
+                            </div>
+                            <div class="review-date">
+                                <small>2 мая 2025</small>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <span>ЕС</span>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Екатерина Смирнова</h4>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Красивые букеты, быстрая доставка. Единственное - курьер опоздал на 20 минут, но в целом всё хорошо. Цветы свежие, простояли долго. Буду рекомендовать друзьям.</p>
+                            </div>
+                            <div class="review-date">
+                                <small>25 апреля 2025</small>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <span>ИП</span>
+                                </div>
+                                <div class="review-author">
+                                    <h4>Игорь Петров</h4>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Регулярно заказываю здесь цветы для коллег и деловых партнеров. Всегда отличное качество и презентабельный вид. Приятно, что есть возможность оформить корпоративный заказ. Спасибо за профессионализм!</p>
+                            </div>
+                            <div class="review-date">
+                                <small>15 апреля 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-controls">
+                        <button class="review-control-prev" id="review-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="reviews-dots" id="reviews-dots">
+                        </div>
+                        <button class="review-control-next" id="review-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Корзина</h3>
+            <button class="close-cart" onclick="window.toggleCart()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="cart-content">
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total">
+                <div class="total-price">Итого: <span id="total-price">0 ₽</span></div>
+            </div>
+            <div class="recommended-products">
+                <h4>Рекомендуемые товары:</h4>
+                <div id="recommended-items" class="recommended-items"></div>
+            </div>
+            <div class="cart-footer">
+                <button class="checkout-btn" onclick="showCheckout()">
+                    <span>Оформить заказ</span>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal product-modal" id="product-modal">
+        <div class="modal-content product-modal-content">
+            <button class="close modal-close" id="product-modal-close">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            
+            <div class="product-modal-inner">
+                <div class="product-modal-gallery">
+                    <div class="product-modal-main-image">
+                        <img src="" alt="" id="product-modal-main-img">
+                    </div>
+                    <div class="product-modal-thumbs" id="product-modal-thumbs">
+                    </div>
+                </div>
+                
+                <div class="product-modal-info">
+                    <h2 id="product-modal-title"></h2>
+                    <div class="product-modal-price" id="product-modal-price"></div>
+                    
+                    <div class="product-modal-dimensions">
+                        <div class="dimensions-icon">
+                            <div class="dimension-width">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 12H22M4 10L2 12L4 14M20 10L22 12L20 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="product-modal-width"></span>
+                            </div>
+                            <div class="dimension-height">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2V22M10 4L12 2L14 4M10 20L12 22L14 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="product-modal-height"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-modal-description" id="product-modal-description"></div>
+                    
+                    <div class="product-modal-details">
+                        <div class="product-detail-item">
+                            <span class="detail-label">Категория:</span>
+                            <span class="detail-value" id="product-modal-category"></span>
+                        </div>
+                        <div class="product-detail-item">
+                            <span class="detail-label">Подходит для:</span>
+                            <span class="detail-value" id="product-modal-occasion"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-modal-actions">
+                        <div class="product-modal-quantity">
+                            <button class="quantity-btn modal-minus">-</button>
+                            <span class="quantity" id="product-modal-quantity">1</span>
+                            <button class="quantity-btn modal-plus">+</button>
+                        </div>
+                        <button class="product-modal-add-to-cart" id="product-modal-add-to-cart">
+                            <span>В корзину</span>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 6h19l-3 10H6L3 6zm0 0l-.75-2.5M11 19.5a1.5 1.5 0 01-3 0M17 19.5a1.5 1.5 0 01-3 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-modal-recommended">
+                <h3>Вам может понравиться</h3>
+                <div class="product-modal-recommended-grid" id="product-modal-recommended">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="checkout-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #000000;">Оформление заказа</h2>
+                <button class="close" onclick="closeCheckout()">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="checkout-form" class="checkout-form">
+                <div class="form-section">
+                    <h3>Тип получения</h3>
+                    <div class="delivery-type-selector">
+                        <input type="radio" id="delivery" name="delivery-type" value="delivery" checked onchange="updateOrderTotal()">
+                        <label for="delivery" class="delivery-option">
+                            <div class="option-icon"><img src="https://cdn-icons-png.flaticon.com/128/8821/8821486.png" alt="Доставка" style="width: 32px; height: 32px;"></div>
+                            <div class="option-text">
+                                <h4>Доставка</h4>
+                                <p>Доставим в указанное время</p>
+                                <small>Режим работы: 10:00 - 21:00</small>
+                            </div>
+                        </label>
+                        
+                        <input type="radio" id="pickup" name="delivery-type" value="pickup" onchange="updateOrderTotal()">
+                        <label for="pickup" class="delivery-option">
+                            <div class="option-icon"><img src="https://cdn-icons-png.flaticon.com/128/7662/7662467.png" alt="Самовывоз" style="width: 32px; height: 32px;"></div>
+                            <div class="option-text">
+                                <h4>Самовывоз</h4>
+                                <p>Заберите из магазина</p>
+                                <small>Режим работы: 9:00 - 21:00</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+    <h3>Контактная информация</h3>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Имя отправителя *</label>
+            <input type="text" id="sender-name" placeholder="Иван Иванов" required>
+        </div>
+        <div class="form-group">
+            <label>Телефон отправителя *</label>
+            <input type="tel" id="sender-phone" placeholder="+7 (999) 123-45-67" required inputmode="numeric">
+        </div>
+    </div>
+    <div class="form-row delivery-only">
+        <div class="form-group">
+            <label>Имя получателя *</label>
+            <input type="text" id="receiver-name" placeholder="Мария Петрова" required>
+        </div>
+        <div class="form-group">
+            <label>Телефон получателя *</label>
+            <input type="tel" id="receiver-phone" placeholder="+7 (999) 123-45-67" required inputmode="numeric">
+        </div>
+    </div>
+</div>
+
+                <div class="form-section delivery-only" id="delivery-section">
+                    <h3>Адрес доставки</h3>
+                    <div class="form-row single-column">
+                        <div class="form-group full-width">
+                            <label>Адрес *</label>
+                            <input type="text" id="address" placeholder="Начните вводить адрес..." autocomplete="off" required>
+                            <div class="address-hint">Например: Москва Тверская 10 или Одинцово Ленина 5</div>
+                        </div>
+                    </div>
+                    <div class="address-details">
+                        <div class="form-group field-with-toggle">
+                            <label for="apartment">Квартира/Офис</label>
+                            <input type="text" id="apartment" placeholder="кв. 25">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="no-apartment">
+                                    <span class="toggle-text">Нет квартиры</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group field-with-toggle">
+                            <label for="entrance">Подъезд</label>
+                            <input type="number" id="entrance" placeholder="2" min="1">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="no-entrance">
+                                    <span class="toggle-text">Нет подъезда</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group field-with-toggle">
+                            <label for="floor">Этаж</label>
+                            <input type="number" id="floor" placeholder="5" min="1">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="no-floor">
+                                    <span class="toggle-text">Нет этажа</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section pickup-only" id="pickup-section" style="display: none;">
+                    <h3>Выберите магазин</h3>
+                    
+                    <div class="store-option">
+                        <input type="radio" id="store1" name="store" value="merzlyakovsky-8">
+                        <label for="store1">
+                            <strong>Цветочный шарм на Мерзляковском переулке, 8с5</strong><br>
+                            Москва, ул. Мерзляковский переулок, 8с5<br>
+                            Режим: 9:00 - 21:00
+                        </label>
+                    </div>
+
+                    <div class="store-option">
+                        <input type="radio" id="store2" name="store" value="merzlyakovsky-22">
+                        <label for="store2">
+                            <strong>Цветочный шарм на Мерзляковском переулке, 22</strong><br>
+                            Москва, ул. Мерзляковский переулок, 22<br>
+                            Режим: 9:00 - 21:00
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+    <h3>Время получения</h3>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Дата *</label>
+            <div class="custom-date-picker">
+                <input type="text" id="delivery-date" class="date-input" placeholder="ДД.ММ.ГГГГ" readonly required>
+                <div class="date-picker-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5992/5992498.png" alt="Календарь">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Время *</label>
+            <div class="custom-select time-select">
+                <select id="delivery-time" required>
+                    <option value="">Выберите время</option>
+                    <option value="10:00">10:00 - 11:00</option>
+                    <option value="11:00">11:00 - 12:00</option>
+                    <option value="12:00">12:00 - 13:00</option>
+                    <option value="13:00">13:00 - 14:00</option>
+                    <option value="14:00">14:00 - 15:00</option>
+                    <option value="15:00">15:00 - 16:00</option>
+                    <option value="16:00">16:00 - 17:00</option>
+                    <option value="17:00">17:00 - 18:00</option>
+                    <option value="18:00">18:00 - 19:00</option>
+                    <option value="19:00">19:00 - 20:00</option>
+                    <option value="20:00">20:00 - 21:00</option>
+                </select>
+                <div class="time-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5904/5904844.png" alt="Время">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="time-note">
+        <p id="time-range-note">Выберите удобное время получения заказа</p>
+    </div>
+</div>
+                <div class="form-section">
+    <h3>Дополнительно</h3>
+    
+    <!-- Поле для промокода -->
+    <div class="form-group">
+        <label>Промокод</label>
+        <div style="display: flex; gap: 10px;">
+            <input type="text" id="promo-code" placeholder="Введите промокод" style="flex: 1;">
+            <button type="button" id="apply-promo-btn" class="apply-promo-btn" onclick="applyPromoCode()">Применить</button>
+        </div>
+        <div id="promo-message" class="promo-message" style="display: none;"></div>
+    </div>
+    
+    <div class="form-group">
+        <div class="card-checkbox">
+            <label class="toggle-label">
+                <input type="checkbox" id="add-card">
+                <span class="toggle-text">Добавить открытку (бесплатно)</span>
+            </label>
+        </div>
+        <div id="card-text-container" style="display: none;">
+            <textarea id="card-text" placeholder="Поздравляю с днем рождения! Желаю счастья и здоровья!" rows="2" maxlength="256"></textarea>
+            <div class="char-count">
+                <span id="char-counter">0/256</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Комментарий к заказу</label>
+        <textarea id="order-comment" placeholder="Дополнительные пожелания..." rows="2"></textarea>
+    </div>
+</div>
+
+                <div class="order-summary">
+                    <div class="delivery-info">
+                        <p class="delivery-cost-line">Стоимость доставки: <span id="delivery-cost">200 ₽</span></p>
+                        <p class="total-order">Итого к оплате: <span id="order-total">0 ₽</span></p>
+                    </div>
+                    <button type="submit" class="submit-order">
+                        <span>Оформить заказ</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>+7 (926) 758-22-39</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>info@floralcharm.ru</span>
+                    </div>
+                    
+                    <div class="footer-info">
+                        <h4>Реквизиты</h4>
+                        <p>ИП: ХАЙРЕТДИНОВА АЛИНА ИЛЬЯСОВНА</p>
+                        <p>ИНН: 102030405060</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Адреса магазинов</h3>
+                    <div class="address-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                        </svg>
+                        <span>г. Москва, ул. Мерзляковский переулок, 8с5</span>
+                    </div>
+                    <div class="address-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                        </svg>
+                        <span>г. Москва, ул. Мерзляковский переулок, 22</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <div class="schedule-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div>
+                            <p>Самовывоз: 9:00 - 21:00</p>
+                            <p>Доставка: 10:00 - 21:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-menu">
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#reviews-section">Отзывы</a></li>
+                        <li><a href="#" onclick="showPrivacy()">Политика конфиденциальности</a></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="https://vk.com/hebfhfhn" target="_blank" class="social-link">
+                            <img src="https://cdn-icons-png.flaticon.com/512/145/145813.png" alt="VK" style="width: 20px; height: 20px;"></a>
+                        <a href="https://t.me/fpfjjfbrb" target="_blank" class="social-link">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" style="width: 20px; height: 20px;"></a>
+                        <a href="https://wa.me/79267582239" target="_blank" class="social-link">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 20px; height: 20px;"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025. Интернет-магазин Цветочный шарм</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="authModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #000000;">Вход в аккаунт</h2>
+                <button class="close" onclick="closeAuthModal()">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="loginForm">
+                <form id="loginFormElement" class="auth-form" onsubmit="return handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль *</label>
+                        <input type="password" name="password" placeholder="Введите пароль" required>
+                    </div>
+                    <button type="submit" class="submit-auth">
+                        <span>Войти</span>
+                    </button>
+                </form>
+                <p class="auth-switch">Нет аккаунта? <a href="#" onclick="showRegisterForm()">Зарегистрироваться</a></p>
+            </div>
+            
+            <div id="registerForm" style="display: none;">
+                <form id="registerFormElement" class="auth-form" onsubmit="return handleRegister(event)">
+                    <div class="form-group">
+                        <label>Имя пользователя *</label>
+                        <input type="text" name="username" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон *</label>
+                        <input type="tel" name="phone" placeholder="+7 (999) 123-45-67" inputmode="numeric">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль *</label>
+                        <input type="password" name="password" placeholder="Не менее 6 символов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Подтвердите пароль *</label>
+                        <input type="password" name="confirm_password" placeholder="Повторите пароль" required>
+                    </div>
+                    <button type="submit" class="submit-auth">
+                        <span>Зарегистрироваться</span>
+                    </button>
+                </form>
+                <p class="auth-switch">Уже есть аккаунт? <a href="#" onclick="showLoginForm()">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="userPanel" style="display: none;" class="user-panel">
+        <div class="user-info">
+            <span id="userName"></span>
+            <div class="user-menu">
+                <a href="#" onclick="showProfile()">Профиль</a>
+                <a href="#" onclick="showMyOrders()">Мои заказы</a>
+                <a href="#" id="adminLink" style="display: none;" onclick="showAdminPanel()">Админ панель</a>
+                <a href="#" onclick="logout()">Выйти</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var phoneMasks = [
+                '#custom-phone',
+                '#sender-phone',
+                '#receiver-phone',
+                'input[name="phone"]'
+            ];
+            
+            phoneMasks.forEach(function(selector) {
+                $(selector).inputmask('+7 (999) 999-99-99', {
+                    showMaskOnHover: false,
+                    showMaskOnFocus: true,
+                    clearIncomplete: true,
+                    placeholder: '_',
+                    onBeforePaste: function(pastedValue) {
+                        pastedValue = pastedValue.replace(/[^\d]/g, '');
+                        if (pastedValue.length === 10) {
+                            return '+7' + pastedValue;
+                        } else if (pastedValue.length === 11) {
+                            if (pastedValue[0] === '7' || pastedValue[0] === '8') {
+                                return '+7' + pastedValue.substring(1);
+                            }
+                        }
+                        return pastedValue;
+                    }
+                });
+            });
+
+            if (window.innerWidth <= 768) {
+                $('input[type="tel"]').css('font-size', '16px');
+            }
+        });
+    </script>
+
+</body>
+</html>
