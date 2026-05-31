@@ -1,0 +1,969 @@
+/* ========== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ========== */
+:root {
+    --primary: #FF6B9D;
+    --primary-dark: #E84A7A;
+    --primary-light: #FFDCE8;
+    --dark: #1A1A2E;
+    --gray: #6C7283;
+    --gray-light: #E4E9F2;
+    --bg: #F8FAFE;
+    --white: #FFFFFF;
+    --success: #10B981;
+    --danger: #EF4444;
+    --radius: 20px;
+    --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(145deg, #F8FAFE 0%, #F0F3F9 100%);
+    color: var(--dark);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.user_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ========== ШАПКА ========== */
+.user_profile-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 48px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.user_profile-header::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="white"/></svg>') repeat-x;
+    background-size: 1200px 60px;
+}
+
+.user_profile-header .user_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.user_back-to-shop {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.user_back-to-shop:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateX(-5px);
+}
+
+.user_profile-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFE0EC 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+}
+
+/* ========== ОСНОВНАЯ СЕТКА ========== */
+.user_profile-container {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 32px;
+    margin: 30px 0 60px;
+    position: relative;
+    z-index: 3;
+}
+
+/* ========== ЛЕВАЯ КОЛОНКА ========== */
+.user_profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Карточка профиля */
+.user_profile-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.user_profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.user_profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -8px rgba(255, 107, 157, 0.4);
+}
+
+.user_profile-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.user_role-badge {
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+/* Статистика */
+.user_profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-light);
+}
+
+.user_stat-item {
+    text-align: center;
+}
+
+.user_stat-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.user_stat-label {
+    font-size: 0.75rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* Информация и действия */
+.user_info-card, .user_actions-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.user_info-card:hover, .user_actions-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ========== РОЗОВЫЕ ЗАГОЛОВКИ КАРТОЧЕК ========== */
+.user_info-card h3, .user_actions-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #E84A7A, #FF8FB4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Иконки в заголовках карточек */
+.user_info-card h3 i, .user_actions-card h3 i {
+    background: linear-gradient(135deg, #E84A7A, #FF8FB4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1rem;
+}
+
+/* Иконки в кнопках действий (розовые до наведения) */
+.user_action-btn i {
+    color: #E84A7A;
+    transition: all 0.3s ease;
+}
+
+.user_action-btn:hover i {
+    color: white;
+}
+
+.user_info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user_info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-light);
+    transition: all 0.2s ease;
+}
+
+.user_info-item:hover {
+    background: var(--bg);
+    padding-left: 8px;
+    border-radius: 10px;
+}
+
+.user_info-label {
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.user_info-value {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.85rem;
+    text-align: right;
+    word-break: break-word;
+    max-width: 60%;
+}
+
+/* Кнопки действий */
+.user_actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user_action-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: #F5F7FA;
+    border-radius: 14px;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.user_action-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    transform: translateX(8px);
+}
+
+.user_logout-btn {
+    background: #FEE2E2;
+    color: var(--danger);
+}
+
+.user_logout-btn:hover {
+    background: linear-gradient(135deg, var(--danger), #DC2626);
+    color: white;
+}
+
+/* ========== ПРАВАЯ КОЛОНКА (ЗАКАЗЫ) ========== */
+.user_profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.user_orders-section {
+    background: transparent;
+}
+
+.user_section-header {
+    margin-bottom: 24px;
+}
+
+/* ========== РОЗОВЫЙ ЗАГОЛОВОК "ИСТОРИЯ ЗАКАЗОВ" ========== */
+.user_section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    background: linear-gradient(135deg, #E84A7A, #FF8FB4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Иконка рядом с "История заказов" */
+.user_section-header h2 i {
+    background: linear-gradient(135deg, #E84A7A, #FF8FB4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.4rem;
+}
+
+/* Список заказов */
+.user_orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Карточка заказа */
+.user_order-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 0;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.user_order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Градиентный бордер при наведении */
+.user_order-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--primary));
+    transition: left 0.5s ease;
+}
+
+.user_order-card:hover::after {
+    left: 0;
+}
+
+/* Шапка заказа */
+.user_order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.user_order-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.user_order-date {
+    color: var(--gray);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Статус */
+.user_order-status {
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.user_order-status:hover {
+    transform: scale(1.02);
+    filter: brightness(0.98);
+}
+
+.user_status-new { background: #FEF3C7; color: #D97706; }
+.user_status-confirmed { background: #DBEAFE; color: #2563EB; }
+.user_status-in_progress { background: #E0E7FF; color: #4338CA; }
+.user_status-delivered { background: #D1FAE5; color: #059669; }
+.user_status-cancelled { background: #FEE2E2; color: #DC2626; }
+
+/* Детали заказа */
+.user_order-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.user_detail-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.user_detail-label {
+    font-size: 0.85rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.user_detail-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+}
+
+/* Кнопка отзыва */
+.user_order-review {
+    margin-top: 16px;
+    text-align: right;
+}
+
+.user_review-btn {
+    padding: 8px 24px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.user_review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(255, 107, 157, 0.3);
+}
+
+.user_review-btn:active {
+    transform: scale(0.96);
+}
+
+.user_review-view {
+    background: linear-gradient(135deg, #6C7283, #4B5563);
+}
+
+/* Пустое состояние */
+.user_empty-state {
+    text-align: center;
+    padding: 60px 32px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.user_empty-state i {
+    color: var(--primary-light);
+    margin-bottom: 20px;
+}
+
+.user_empty-state h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.user_empty-state p {
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.user_cta-button {
+    display: inline-block;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.user_cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* ========== УВЕДОМЛЕНИЯ (АЛЕРТЫ) ========== */
+.user_alert {
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideDown 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user_alert:hover {
+    transform: translateX(5px);
+    filter: brightness(0.98);
+}
+
+.user_alert-success {
+    background: #D1FAE5;
+    color: #065F46;
+    border-left: 5px solid var(--success);
+}
+
+.user_alert-error {
+    background: #FEE2E2;
+    color: #991B1B;
+    border-left: 5px solid var(--danger);
+}
+
+.user_alert i {
+    font-size: 1.2rem;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== ПОДВАЛ ========== */
+.user_footer {
+    background: var(--white);
+    padding: 32px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--gray-light);
+    text-align: center;
+    color: var(--gray);
+}
+
+/* ========== МОДАЛЬНЫЕ ОКНА ========== */
+.user_modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_modal-content {
+    background: var(--white);
+    width: 90%;
+    max-width: 520px;
+    border-radius: 28px;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.user_modal-header {
+    padding: 22px 28px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user_modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.user_modal-close {
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.user_modal-close:hover {
+    transform: rotate(90deg);
+    opacity: 0.8;
+}
+
+.user_modal-body {
+    padding: 28px;
+}
+
+.user_form-group {
+    margin-bottom: 20px;
+}
+
+.user_form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.9rem;
+}
+
+.user_form-group input,
+.user_form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: 14px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.user_form-group input:focus,
+.user_form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.2);
+    transform: translateY(-1px);
+}
+
+.user_modal-footer {
+    padding: 20px 28px;
+    border-top: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #F8FAFE;
+}
+
+.user_btn-cancel {
+    padding: 10px 24px;
+    background: white;
+    border: 2px solid var(--gray-light);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.user_btn-cancel:hover {
+    background: var(--gray-light);
+}
+
+.user_btn-save {
+    padding: 10px 28px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.user_btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(255, 107, 157, 0.3);
+}
+
+/* Требования к паролю */
+.user_password-requirements {
+    background: #F8FAFE;
+    padding: 15px 20px;
+    border-radius: 14px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.user_password-requirements p:first-child {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.user_password-requirements p {
+    margin: 6px 0;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user_password-requirements i {
+    width: 18px;
+    font-size: 0.8rem;
+}
+
+.user_requirement-valid {
+    color: var(--success) !important;
+}
+
+.user_requirement-invalid {
+    color: var(--danger) !important;
+}
+
+/* Звезды рейтинга */
+.user_rating-stars {
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.user_rating-stars i {
+    color: #D1D5DB;
+    transition: all 0.1s ease;
+}
+
+.user_rating-stars i.active,
+.user_rating-stars i.hover {
+    color: #FBBF24;
+}
+
+.user_rating-stars i:hover,
+.user_rating-stars i:hover ~ i {
+    color: #FBBF24;
+}
+
+.user_rating-stars.view-mode i {
+    cursor: default;
+}
+
+.user_rating-stars.view-mode i.active {
+    color: #FBBF24;
+}
+
+/* ========== АНИМАЦИЯ ПОЯВЛЕНИЯ КАРТОЧЕК ========== */
+.user_profile-card,
+.user_info-card,
+.user_actions-card,
+.user_order-card {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.user_profile-card { animation-delay: 0.05s; }
+.user_info-card { animation-delay: 0.1s; }
+.user_actions-card { animation-delay: 0.15s; }
+.user_order-card:nth-child(1) { animation-delay: 0.05s; }
+.user_order-card:nth-child(2) { animation-delay: 0.1s; }
+.user_order-card:nth-child(3) { animation-delay: 0.15s; }
+.user_order-card:nth-child(4) { animation-delay: 0.2s; }
+.user_order-card:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== КАСТОМНЫЙ СКРОЛЛБАР ========== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ========== АДАПТИВ ДЛЯ ПЛАНШЕТОВ ========== */
+@media (max-width: 1024px) {
+    .user_profile-container {
+        grid-template-columns: 300px 1fr;
+        gap: 24px;
+    }
+    
+    .user_container {
+        padding: 0 24px;
+    }
+}
+
+/* ========== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ========== */
+@media (max-width: 768px) {
+    .user_container {
+        padding: 0 16px;
+    }
+    
+    .user_profile-header {
+        padding: 30px 0 60px;
+    }
+    
+    .user_profile-header .user_container {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .user_back-to-shop {
+        padding: 8px 20px;
+    }
+    
+    .user_profile-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .user_profile-container {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        gap: 20px;
+    }
+    
+    .user_profile-card {
+        padding: 24px;
+    }
+    
+    .user_profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .user_profile-name {
+        font-size: 1.2rem;
+    }
+    
+    .user_profile-stats {
+        gap: 24px;
+    }
+    
+    .user_stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .user_stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .user_info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .user_info-value {
+        max-width: 100%;
+        text-align: left;
+    }
+    
+    .user_order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .user_order-status {
+        align-self: flex-start;
+    }
+    
+    .user_order-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .user_order-review {
+        text-align: left;
+    }
+    
+    .user_review-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .user_modal-footer {
+        flex-direction: column;
+    }
+    
+    .user_btn-cancel, .user_btn-save {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/128/2560/2560789.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Колесо фортуны - Акции и скидки | Цветочный шарм</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="wheel.css">
+</head>
+<body>
+    <header class="wheel-header">
+        <a href="../index.html" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+            </svg>
+            <span>Цветочный шарм</span>
+        </a>
+        <a href="../index.html" class="back-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>На главную</span>
+        </a>
+    </header>
+
+    <div class="wheel-container">
+        <div class="wheel-card">
+            <h1>Колесо фортуны</h1>
+            <p class="subtitle">Покрути колесо и получи приз!</p>
+            
+            <div class="wheel-wrapper">
+                <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                <button class="spin-btn-center" id="spinBtn">КРУТИТЬ<br>КОЛЕСО</button>
+            </div>
+            
+            <div class="result" id="result">
+                Нажми на кнопку, чтобы начать!
+            </div>
+            
+            <div class="prizes-info">
+                <h3>Возможные призы:</h3>
+                <div class="prizes-list" id="prizesList"></div>
+                <p style="font-size: 0.7rem; margin-top: 10px; color: #888;">* Каждый пользователь может участвовать 1 раз в неделю</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="wheel.js"></script>
+</body>
+</html>

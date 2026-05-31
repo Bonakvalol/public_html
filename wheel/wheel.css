@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Шапка */
+.wheel-header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ff6b95;
+    text-decoration: none;
+}
+
+.logo svg {
+    width: 28px;
+    height: 28px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0f2ff;
+    color: #667eea;
+    padding: 8px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateX(-3px);
+}
+
+/* Контейнер для колеса */
+.wheel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+}
+
+.wheel-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 40px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Контейнер для колеса с относительным позиционированием */
+.wheel-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ff6b95, #d84a73);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Canvas для колеса */
+canvas {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+canvas:hover {
+    transform: scale(1.02);
+}
+
+/* Кнопка в центре колеса */
+.spin-btn-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ca35b5, #9438c7);
+    color: white;
+    border: 3px solid white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    z-index: 10;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.spin-btn-center:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    background: linear-gradient(135deg, #ee1162, #ca35b5);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.spin-btn-center:disabled {
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+    cursor: not-allowed;
+}
+
+/* Скрываем старую кнопку */
+.spin-btn {
+    display: none !important;
+}
+
+/* Результат */
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.result.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.result.info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.result.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Информация об акциях */
+.prizes-info {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f0f2ff;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.prizes-info h3 {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #667eea;
+}
+
+.prizes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.prize-badge {
+    background: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Анимация */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.5s ease;
+}
+
+/* Кнопка входа для неавторизованных */
+.login-redirect-btn {
+    background: linear-gradient(135deg, #ff6b95, #d84a73);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.login-redirect-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(216, 74, 115, 0.3);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 550px) {
+    .wheel-card {
+        padding: 20px;
+    }
+    canvas {
+        width: 280px;
+        height: 280px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .spin-btn-center {
+        width: 70px;
+        height: 70px;
+        font-size: 0.7rem;
+    }
+    .wheel-header {
+        padding: 12px 20px;
+    }
+    .logo span {
+        font-size: 1rem;
+    }
+    .back-btn span {
+        display: none;
+    }
+}
